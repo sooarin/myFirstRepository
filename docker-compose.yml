@@ -9,12 +9,6 @@ services:
       - "3000:3000"
     depends_on:
       - db
-    environment:
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_USERNAME=root
-      - DB_PASSWORD=password
-      - DB_NAME=nestjs_db
 
   db:
     container_name: mysql
