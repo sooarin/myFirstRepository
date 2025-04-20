@@ -1,5 +1,5 @@
 # Node.js 18 버전 기반 이미지
-FROM node:18
+FROM node:20
 
 # 컨테이너 내 작업 디렉토리 설정
 WORKDIR /usr/src/app

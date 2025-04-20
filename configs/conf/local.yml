@@ -1,0 +1,27 @@
+db:
+  type: mysql
+  replication:
+    master:
+      host: localhost
+      port: 3306
+      username: root
+      password: '0328'
+      database: myboard
+    slaves:
+      - host: localhost
+        port: 3306
+        username: root
+        password: '0328'
+        database: myboard
+      - host: localhost
+        port: 3306
+        username: root
+        password: '0328'
+        database: myboard
+    canRetry: true
+    selector: RR
+auth:
+  jwt:
+    secret: nest-test1234
+    signOptions:
+      expiresIn: 3600
