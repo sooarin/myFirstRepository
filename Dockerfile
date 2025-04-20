@@ -17,4 +17,4 @@ COPY --from=builder /app ./
 
 EXPOSE 3000
 
-CMD ["node",  "dist/apps/favorite/main"]
+CMD ["node",  "dist/main"]
