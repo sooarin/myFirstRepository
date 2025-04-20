@@ -13,6 +13,7 @@ enum Env {
 const _checkConfigFile = (env?: Env): string | undefined => {
   const fileName = env ? `${env}.yml` : 'local.yml';
   const filePath = join(`${process.env.PWD}`, `./configs/conf/${fileName}`);
+  console.log(filePath)
   return existsSync(filePath) === true ? filePath : undefined;
 };
 
