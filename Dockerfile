@@ -1,23 +1,23 @@
-# Node.js 20 버전 기반 이미지
-FROM node:20
+# 1단계: 빌드 전용 스테이지
+FROM node:20-alpine AS builder
 
-# 컨테이너 내 작업 디렉토리 설정
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# 의존성 설치를 위한 package 파일 복사
 COPY package*.json ./
+RUN npm i
 
-# 의존성 설치
-RUN npm install
-
-# 나머지 소스 코드 복사
 COPY . .
-
-# 빌드
 RUN npm run build
 
-# 앱 포트 개방
-EXPOSE 3000
+# 2단계: 실행 전용 스테이지 (불필요한 의존성 제거)
+FROM node:20-alpine
 
-# NestJS 앱 실행 명령
+WORKDIR /app
+
+COPY --from=builder /app/package*.json ./
+RUN npm ci --only=production
+
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 3000
 CMD ["node", "dist/main"]
