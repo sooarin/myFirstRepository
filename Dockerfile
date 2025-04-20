@@ -13,8 +13,11 @@ RUN npm install
 # 나머지 소스 코드 복사
 COPY . .
 
+# 빌드
+RUN npm run build
+
 # 앱 포트 개방
 EXPOSE 3000
 
 # NestJS 앱 실행 명령
-CMD ["npm", "run", "start:dev"]
+CMD ["node", "dist/main"]

@@ -2,9 +2,7 @@ version: '3'
 services:
   server:
     container_name: nest-app
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: nest-app
     ports:
       - "3000:3000"
     depends_on:
