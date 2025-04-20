@@ -21,7 +21,7 @@ const _loadConfig = <T = Record<string, any>>(filePath: string | undefined): T =
 };
 
 export default (): Config => {
-  const env = (process.env.wavve_env as Env) || Env.local;
+  const env = Env.local;
   const envConfigFile = _checkConfigFile(env);
   const envConfig = _loadConfig(envConfigFile);
   return envConfig as Config;
