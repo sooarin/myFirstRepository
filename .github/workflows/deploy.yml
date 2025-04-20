@@ -21,8 +21,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "."
           target: "/home/ubuntu/app"
-          debug: true
-
 
       - name: SSH and deploy
         uses: appleboy/ssh-action@v0.1.7
