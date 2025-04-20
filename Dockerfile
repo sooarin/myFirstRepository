@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # NestJS 앱 실행 명령
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start:dev"]
