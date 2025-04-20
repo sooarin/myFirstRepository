@@ -1,23 +1,20 @@
-# 1단계: 빌드 전용 스테이지
-FROM node:20-alpine AS builder
+FROM node:20.10.0-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm i
+COPY package.json /app/
+COPY tsconfig.json /app/
 
-COPY . .
-RUN npm run build
+COPY . /app/
 
-# 2단계: 실행 전용 스테이지 (불필요한 의존성 제거)
-FROM node:20-alpine
+RUN npm install && npm run build
+
+FROM node:20.10.0-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/package*.json ./
-RUN npm ci --only=production
-
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app ./
 
 EXPOSE 3000
-CMD ["node", "dist/main"]
+
+CMD ["node",  "dist/apps/favorite/main"]
