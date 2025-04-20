@@ -1,4 +1,4 @@
-FROM node:20.10.0-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ COPY . /app/
 
 RUN npm install && npm run build
 
-FROM node:20.10.0-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
