@@ -5,6 +5,7 @@ db:
   username: root
   password: '0328'
   database: myboard
+  synchronize: true
 auth:
   jwt:
     secret: nest-test1234
