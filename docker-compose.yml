@@ -16,8 +16,8 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: nestjs_db
+      MYSQL_ROOT_PASSWORD: '0328'
+      MYSQL_DATABASE: myboard
     volumes:
       - mysql-data:/var/lib/mysql
 
